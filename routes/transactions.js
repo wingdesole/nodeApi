@@ -10,7 +10,11 @@ const router = express.Router();
 
 Fawn.init(mongoose);
 
-router.get('/test', auth, async (req,res)=>{
+router.get('/test', async (req,res)=>{
+  res.send({message: 'Success'})
+})
+
+router.get('/mytransaction', auth, async (req,res)=>{
   const userId = req.body.userId;
   const merchantId = req.body.merchantId;
   const history = Transaction.lookup(userId,merchantId);
